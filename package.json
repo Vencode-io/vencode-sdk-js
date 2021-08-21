@@ -1,0 +1,33 @@
+{
+  "name": "vencode.io",
+  "version": "0.0.1",
+  "description": "Vencode API wrapper",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepublish": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vencode-io/vencode-sdk-js.git"
+  },
+  "keywords": [
+    "transcoding",
+    "encoding",
+    "cloud",
+    "video"
+  ],
+  "author": "Luca Underwood",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Vencode-io/vencode-sdk-js/issues"
+  },
+  "homepage": "https://github.com/Vencode-io/vencode-sdk-js#readme",
+  "devDependencies": {
+    "typescript": "^4.3.5"
+  },
+  "peerDependencies": {
+    "axios": "^0.21.1"
+  }
+}
