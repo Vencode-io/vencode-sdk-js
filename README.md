@@ -21,7 +21,7 @@ For better and clearer documentation, please visit **https://docs.vencode.io**
 // commonjs
 const { Client } = require("@vencode/sdk");
 // ES6  
-import { Client } from "@vencode/core";
+import { Client } from "@vencode/sdk";
   
 const client = new Client({
   // Your Vencode API Key and User ID
@@ -49,7 +49,7 @@ const client = new Client({
 // commonjs
 const { JobBuilder } = require("@vencode/sdk");
 // ES6  
-import { JobBuilder } from "@vencode/core";
+import { JobBuilder } from "@vencode/sdk";
 
 // Create a builder instance
 const builder = new JobBuilder(client)
