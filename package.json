@@ -1,12 +1,13 @@
 {
-  "name": "vencode.io",
+  "name": "@vencode/sdk",
   "version": "0.0.1",
-  "description": "Vencode API wrapper",
+  "description": "Vencode API SDK. Find out more https://vencode.io",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
-    "prepublish": "tsc"
+    "prepublish": "tsc",
+    "test": "npm run build && node tests/index.js"
   },
   "repository": {
     "type": "git",
@@ -16,7 +17,8 @@
     "transcoding",
     "encoding",
     "cloud",
-    "video"
+    "video",
+    "vencode"
   ],
   "author": "Luca Underwood",
   "license": "MIT",
@@ -25,9 +27,15 @@
   },
   "homepage": "https://github.com/Vencode-io/vencode-sdk-js#readme",
   "devDependencies": {
+    "@types/fluent-ffmpeg": "^2.1.18",
+    "fluent-ffmpeg": "^2.1.2",
+    "mongoose": "^5.13.7",
     "typescript": "^4.3.5"
   },
   "peerDependencies": {
     "axios": "^0.21.1"
+  },
+  "dependencies": {
+    "@vencode/core": "^1.1.8"
   }
 }
