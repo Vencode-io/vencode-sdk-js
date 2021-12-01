@@ -1,5 +1,6 @@
-import { Container, IJob, Output, Thumbnail } from "@vencode/core";
+import { Container, IJob, Output, Thumbnail, Watermark } from "@vencode/core";
 import { Client, IEncodeOptions } from "Client";
+import { Document } from "mongoose";
 
 interface Res {
   id: string;
@@ -15,6 +16,7 @@ export class JobBuilder {
   private format: Container;
   private thumbnails: Thumbnail[] = [];
   private resolutions: Res[] = [];
+  private watermark: Watermark;
 
   constructor(client: Client) {
     this.client = client;
@@ -51,6 +53,17 @@ export class JobBuilder {
     return this;
   }
 
+  public applyWatermark(options: Watermark) {
+    this.watermark = options;
+    return this;
+  }
+
+  public applyWatermarkUrl(url: string, options: Watermark) {
+    options.imageUrl = url;
+    this.watermark = options;
+    return this;
+  }
+
   public toJSON(): IEncodeOptions {
     this.resolutions.forEach((entry) => {
       for (let i = 0; i < entry.res.length; i++) {
@@ -64,6 +77,7 @@ export class JobBuilder {
             format: entry.format || this.format || "mp4",
             res: resolution,
           },
+          ...(this.watermark && { watermark: this.watermark }),
         });
       }
     });
@@ -76,7 +90,7 @@ export class JobBuilder {
     };
   }
 
-  public run(): Promise<IJob> {
+  public async run(): Promise<Omit<IJob, keyof Omit<Document, "id">>> {
     return this.client.encode(this.toJSON());
   }
 }

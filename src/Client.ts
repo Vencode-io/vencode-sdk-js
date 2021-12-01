@@ -4,11 +4,13 @@ import {
   IJob,
   IJobMetadata,
   Input,
+  IUser,
   Notify,
   Output,
   Thumbnail,
 } from "@vencode/core";
 import axios, { AxiosError, AxiosInstance, AxiosResponse } from "axios";
+import { Document } from "mongoose";
 
 export interface IAccess {
   apiKey: string;
@@ -63,10 +65,19 @@ export class Client {
   }
 
   /**
+   * Get the current logged in user account
+   */
+  async getUserAccount(): Promise<Omit<IUser, keyof Omit<Document, "id">>> {
+    return returnPromise(this.axiosInstance.get("/users/me/auth"));
+  }
+
+  /**
    * Start an encoding job
    * @param options Encoding options
    */
-  async encode(options: IEncodeOptions): Promise<IJob> {
+  async encode(
+    options: IEncodeOptions
+  ): Promise<Omit<IJob, keyof Omit<Document, "id">>> {
     return returnPromise(
       this.axiosInstance.post("/jobs", {
         ...options,
