@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/Vencode-io/vencode-sdk-js#readme",
   "devDependencies": {
+    "@types/eventsource": "^1.1.7",
     "@types/fluent-ffmpeg": "^2.1.18",
     "@types/mongoose": "^5.11.97",
     "fluent-ffmpeg": "^2.1.2",
@@ -37,6 +38,7 @@
     "axios": "^0.21.1"
   },
   "dependencies": {
-    "@vencode/core": "^1.2.6"
+    "@vencode/core": "^1.2.6",
+    "eventsource": "^1.1.0"
   }
 }
