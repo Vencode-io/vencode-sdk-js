@@ -1,6 +1,6 @@
 {
   "name": "@vencode/sdk",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Vencode API SDK. Find out more https://vencode.io",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
